@@ -13,10 +13,8 @@ def predict(
     p1: float, p2: float, p3: float, p4: float, p5: float,
     p6: float, p7: float, p8: float, p9: float, p10: float
 ):
-    # ================= AUTO THRESHOLD =================
-    # Forex pairs (EURUSD etc.) usually < 10
-    # Gold (XAUUSD) usually > 1000
-    threshold = 0.0002 if p10 < 10 else 0.5
+    # ================= SETTINGS =================
+    threshold = 0.0002   # Noise filter (adjust per pair)
 
     # ================= LOGIC =================
     if (p10 - p9) > threshold:
@@ -28,6 +26,6 @@ def predict(
 
     return {
         "signal": signal,
-        "threshold": threshold,
-        "strategy": "auto_threshold_trend"
+        "strategy": "trend_noise_filter",
+        "threshold": threshold
     }
