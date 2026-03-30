@@ -31,3 +31,11 @@ def predict(data: Data):
     signal = int(torch.argmax(out))
 
     return {"signal": signal}
+    @app.get("/dashboard")
+def dashboard():
+    return {
+        "status": "running",
+        "mode": "AI_PRO",
+        "pairs": ["EURUSD","XAUUSD"],
+        "version": "v2"
+    }
