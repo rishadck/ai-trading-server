@@ -17,6 +17,7 @@ def moving_average(data, period=10):
 # ================= MAIN LOGIC =================
 @app.post("/predict")
 def predict(data: MarketData):
+
     closes = data.close
     rsi = data.rsi
 
