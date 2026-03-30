@@ -71,3 +71,11 @@ def predict(data: MarketData):
         "candles_down": bearish_candles,
         "strategy": "sniper_pro_v1"
     }
+    @app.get("/dashboard")
+def dashboard():
+    return {
+        "status": "running",
+        "strategy": "sniper_pro_v1",
+        "pairs": ["EURUSD", "XAUUSD"],
+        "mode": "live"
+    }
