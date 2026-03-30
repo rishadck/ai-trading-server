@@ -17,7 +17,6 @@ def moving_average(data, period=10):
 # ================= MAIN LOGIC =================
 @app.post("/predict")
 def predict(data: MarketData):
-
     closes = data.close
     rsi = data.rsi
 
@@ -71,9 +70,9 @@ def predict(data: MarketData):
         "candles_down": bearish_candles,
         "strategy": "sniper_pro_v1"
     }
-    
-    @app.get("/dashboard")
-    def dashboard():
+
+@app.get("/dashboard")
+def dashboard():
     return {
         "status": "running",
         "strategy": "sniper_pro_v1",
