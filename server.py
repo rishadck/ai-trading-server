@@ -13,15 +13,19 @@ def predict(
     p1: float, p2: float, p3: float, p4: float, p5: float,
     p6: float, p7: float, p8: float, p9: float, p10: float
 ):
-    # SIMPLE TREND LOGIC (STABLE)
-    if p10 > p9:
+    # ================= SETTINGS =================
+    threshold = 0.0002   # Noise filter (adjust per pair)
+
+    # ================= LOGIC =================
+    if (p10 - p9) > threshold:
         signal = 2   # BUY
-    elif p10 < p9:
+    elif (p9 - p10) > threshold:
         signal = 0   # SELL
     else:
         signal = 1   # HOLD
 
     return {
         "signal": signal,
-        "strategy": "trend_follow_simple"
+        "strategy": "trend_noise_filter",
+        "threshold": threshold
     }
